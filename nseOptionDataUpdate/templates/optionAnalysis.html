@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Option Analysis</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">  
+    <script>
+        $(document).ready(function () {
+            $('#optionView').DataTable({
+                "scrollX": true,
+                "sScrollXInner": "100%",
+                "pageLength": 25
+            });
+        });
+      
+    </script>
+    <style>
+        .content-table{
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: .9em;
+            min-width: 400px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body class="wide comments example dt-example-bootstrap5">
+    <div class="fw-body">
+    <div class="demo-html">
+        <table id="optionView" class="display" style="width:75%" class="content-table">
+            <thead>
+                <tr>
+                    <th>Option Name</th>
+                    <th>Strike Price</th>
+                    <th>Expiry Date</th>
+                    <th>Current Value</th>
+                    <th>Last Price Call</th>
+                    <th>Open Interest Call</th>
+                    <th>Call Premium</th>
+                    <th>Last Price Put</th>
+                    <th>Open Interest Put</th>
+                    <th>Put Premium</th>                
+                </tr>
+            </thead>
+            <tbody>
+                {% for option in nseoptionview %}
+                    <tr>
+                        <td>{{ option.optionName }}</td>
+                        <td>{{ option.strikePrice }}</td>
+                        <td>{{ option.expiryDate }}</td>
+                        <td>{{ option.currentValue }}</td>
+                        <td>{{ option.lastPriceCall }}</td>
+                        <td>{{ option.openInterestCall }}</td>
+                        <td>{{ option.callPremium }}</td>
+                        <td>{{ option.lastPricePut }}</td>
+                        <td>{{ option.openInterestPut }}</td>
+                        <td>{{ option.putPremium }}</td>
+                    </tr>
+                {% endfor %}            
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+</html>
